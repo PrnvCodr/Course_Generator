@@ -11,7 +11,6 @@ import LessonPage from './pages/LessonPage'
 import LoadingSpinner from './components/LoadingSpinner'
 import { setTokenGetter } from './utils/api'
 
-const AUDIENCE = import.meta.env.VITE_AUTH0_AUDIENCE || ''
 
 function App() {
   const { isAuthenticated, isLoading, getIdTokenClaims } = useAuth0()

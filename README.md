@@ -13,42 +13,46 @@
 - **Interactive Quizzes** — Select answers, reveal correct option with explanation
 - **PDF Download** — Export any lesson as a styled PDF
 - **Hinglish TTS** — Listen to lessons in Hinglish via Web Speech API
-- **Persistent Courses** — Save courses to MongoDB, private to each user
-- **Auth0 Integration** — Secure login/logout with per-user course isolation
+- **Persistent Courses** — Save courses to MongoDB for later access
+- **Auth0 Integration** — Secure login/logout (optional)
 
 ## 🗂️ Project Structure
 
 ```
-AZ_Project/
-├── client/          # React + Vite frontend → deploy to Vercel
-│   ├── vercel.json  # SPA rewrite rules for React Router
-│   └── .env.example
-└── server/          # Node.js + Express backend → deploy to Render
-    └── .env.example
+project-root/
+├── client/          # React + Vite frontend (deploy to Vercel)
+└── server/          # Node.js + Express backend (deploy to Render)
 ```
 
-## 🚀 Local Development
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB Atlas account
+- MongoDB (local or Atlas)
 - Google Gemini API Key
-- Auth0 account
+- YouTube Data API Key (optional)
+- Auth0 account (optional)
 
-### Backend
+### Backend Setup
+
 ```bash
 cd server
-cp .env.example .env   # fill in your values
+cp .env.example .env
+# Edit .env with your credentials
 npm install
-npm run dev            # http://localhost:5000
+npm run dev
+# Runs on http://localhost:5000
 ```
 
-### Frontend
+### Frontend Setup
+
 ```bash
 cd client
-cp .env.example .env   # fill in your values
+cp .env.example .env
+# Edit .env with your credentials
 npm install
-npm run dev            # http://localhost:5173
+npm run dev
+# Runs on http://localhost:5173
 ```
 
 ## 🔧 Environment Variables
@@ -56,40 +60,18 @@ npm run dev            # http://localhost:5173
 ### Backend (`server/.env`)
 | Variable | Description |
 |---|---|
-| `MONGO_URI` | MongoDB Atlas connection string |
-| `AUTH0_ISSUER_BASE_URL` | Auth0 tenant URL (e.g. `https://dev-xxx.us.auth0.com/`) |
-| `AUTH0_CLIENT_ID` | Auth0 Application Client ID |
+| `MONGO_URI` | MongoDB connection string |
 | `GEMINI_API_KEY` | Google AI Studio API key |
 | `YOUTUBE_API_KEY` | YouTube Data API v3 key |
-| `CLIENT_URL` | Frontend URL (Vercel URL in production) |
+| `AUTH0_ISSUER_BASE_URL` | Auth0 tenant URL |
+| `AUTH0_AUDIENCE` | Auth0 API identifier |
 
 ### Frontend (`client/.env`)
 | Variable | Description |
 |---|---|
-| `VITE_API_URL` | Backend URL (Render URL in production) |
+| `VITE_API_URL` | Backend URL (default: http://localhost:5000) |
 | `VITE_AUTH0_DOMAIN` | Auth0 domain |
 | `VITE_AUTH0_CLIENT_ID` | Auth0 client ID |
-| `VITE_AUTH0_AUDIENCE` | Auth0 audience (optional) |
-| `VITE_YOUTUBE_API_KEY` | YouTube Data API v3 key |
-
-## 🚢 Deployment
-
-### Backend → Render
-1. Connect the **`server/`** directory on [Render](https://render.com)
-2. Set **Build Command**: `npm install`
-3. Set **Start Command**: `node server.js`
-4. Add all environment variables from `server/.env.example`
-5. Copy the Render URL → paste as `VITE_API_URL` in Vercel
-
-### Frontend → Vercel
-1. Connect the **`client/`** directory on [Vercel](https://vercel.com)
-2. **Framework**: Vite (auto-detected)
-3. Add all environment variables from `client/.env.example`
-4. `vercel.json` handles SPA routing automatically
-
-### Auth0 Configuration
-1. Go to **Auth0 Dashboard → Applications → Your App → Settings**
-2. Add your Vercel URL to **Allowed Callback URLs**, **Allowed Logout URLs**, and **Allowed Web Origins**
 
 ## 🏗️ Tech Stack
 
@@ -100,10 +82,15 @@ npm run dev            # http://localhost:5173
 | Backend | Node.js, Express.js |
 | Database | MongoDB + Mongoose |
 | AI | Google Gemini 1.5 Flash |
-| Auth | Auth0 (OAuth 2.0, ID token flow) |
+| Auth | Auth0 (OAuth 2.0) |
 | Video | YouTube Data API v3 |
 | PDF | jsPDF + html2canvas |
 | TTS | Web Speech API + Gemini translation |
+
+## 🚢 Deployment
+
+- **Frontend** → [Vercel](https://vercel.com): connect `client/` directory
+- **Backend** → [Render](https://render.com): connect `server/` directory
 
 ## 📁 API Endpoints
 
@@ -111,8 +98,8 @@ npm run dev            # http://localhost:5173
 |---|---|---|
 | POST | `/api/generate-course` | Generate course outline from topic |
 | POST | `/api/generate-lesson` | Generate full lesson content |
-| GET | `/api/courses` | List user's courses (auth required) |
-| POST | `/api/courses` | Save generated course (auth required) |
+| GET | `/api/courses` | List all courses |
+| POST | `/api/courses` | Save generated course |
 | GET | `/api/courses/:id` | Get course with modules/lessons |
 | DELETE | `/api/courses/:id` | Delete course |
 | PUT | `/api/lessons/:id` | Update lesson content |
