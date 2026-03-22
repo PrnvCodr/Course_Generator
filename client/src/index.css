@@ -7,45 +7,43 @@
 
 /* --- CSS Custom Properties (Tokens) --- */
 :root {
-  /* ── Core Palette — True Black & Refined Grays ── */
-  --bg-base:        #000000;
-  --bg-surface:     #0a0a0a;
-  --bg-card:        #111111;
-  --bg-card-hover:  #161616;
-  --bg-elevated:    #1c1c1e;
-  --bg-glass:       rgba(17, 17, 17, 0.72);
+  /* ── Core Palette — Deep Dark with Color ── */
+  --bg-base:        #030712;
+  --bg-surface:     #0d1117;
+  --bg-card:        #111827;
+  --bg-card-hover:  #1a2236;
+  --bg-elevated:    #1e293b;
+  --bg-glass:       rgba(13, 17, 23, 0.80);
 
-  /* ── Brand — Pure White Gradient (Apple Shimmer) ── */
-  --brand-start:    #ffffff;
-  --brand-mid:      #a0a0a0;
-  --brand-end:      #f5f5f7;
-  /* Subtle silver-to-white shimmer for accents */
-  --brand-gradient: linear-gradient(135deg, #ffffff 0%, #d1d1d6 50%, #ffffff 100%);
-  /* Accent glow — a very restrained, cool white */
-  --brand-glow:     0 0 40px rgba(255, 255, 255, 0.08);
+  /* ── Brand — Electric Neon Gradient ── */
+  --brand-start:    #f72585;
+  --brand-mid:      #7209b7;
+  --brand-end:      #4cc9f0;
+  --brand-gradient: linear-gradient(135deg, #f72585 0%, #7209b7 50%, #4cc9f0 100%);
+  --brand-glow:     0 0 40px rgba(247, 37, 133, 0.25);
 
-  /* ── Interactive Accent — Apple Blue ── */
-  --accent:         #0a84ff;
-  --accent-subtle:  rgba(10, 132, 255, 0.12);
-  --accent-border:  rgba(10, 132, 255, 0.35);
+  /* ── Interactive Accent — Electric Cyan ── */
+  --accent:         #4cc9f0;
+  --accent-subtle:  rgba(76, 201, 240, 0.15);
+  --accent-border:  rgba(76, 201, 240, 0.40);
 
   /* ── Text Hierarchy ── */
-  --text-primary:   #f5f5f7;
-  --text-secondary: #86868b;
-  --text-muted:     #3a3a3c;
-  --text-accent:    #ffffff;
+  --text-primary:   #f0f6fc;
+  --text-secondary: #a8d8ea;
+  --text-muted:     #7b8ec8;
+  --text-accent:    #f72585;
 
   /* ── Borders ── */
-  --border-subtle:  rgba(255, 255, 255, 0.05);
-  --border-normal:  rgba(255, 255, 255, 0.08);
-  --border-bright:  rgba(255, 255, 255, 0.14);
-  --border-accent:  rgba(10, 132, 255, 0.4);
+  --border-subtle:  rgba(76, 201, 240, 0.08);
+  --border-normal:  rgba(76, 201, 240, 0.15);
+  --border-bright:  rgba(76, 201, 240, 0.30);
+  --border-accent:  rgba(247, 37, 133, 0.50);
 
   /* ── Semantic Colors ── */
-  --success: #30d158;
-  --warning: #ffd60a;
-  --error:   #ff453a;
-  --info:    #0a84ff;
+  --success: #39d353;
+  --warning: #f4c430;
+  --error:   #ff4d6d;
+  --info:    #4cc9f0;
 
   /* ── Spacing Scale ── */
   --space-xs:  4px;
@@ -63,11 +61,11 @@
   --radius-xl:   28px;
   --radius-full: 9999px;
 
-  /* ── Shadows — Deep & Refined ── */
+  /* ── Shadows ── */
   --shadow-sm:   0 1px 4px rgba(0, 0, 0, 0.6);
   --shadow-md:   0 4px 20px rgba(0, 0, 0, 0.7);
   --shadow-lg:   0 12px 48px rgba(0, 0, 0, 0.8);
-  --shadow-glow: 0 0 32px rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 0 32px rgba(247, 37, 133, 0.15);
 
   /* ── Transitions ── */
   --transition-fast:   160ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -99,15 +97,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Background — Ultra-subtle noise texture feel via layered radials */
+/* Background — colored radial glows for depth */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 50% at 15% 0%,   rgba(255, 255, 255, 0.025) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 85% 100%, rgba(255, 255, 255, 0.015) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 60% at 50% 50%,  rgba(10, 132, 255, 0.02)  0%, transparent 70%);
+    radial-gradient(ellipse 70% 50% at 15% 0%,   rgba(247, 37, 133, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85% 100%, rgba(76, 201, 240, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 60% at 50% 50%,  rgba(114, 9, 183, 0.05)  0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -187,9 +185,9 @@ code, pre { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
   transform: translateY(-2px);
 }
 
-/* --- Gradient Text (Apple silver shimmer) --- */
+/* --- Gradient Text — Hot pink to electric cyan ── */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #ffffff 100%);
+  background: linear-gradient(135deg, #f72585 0%, #b5179e 40%, #4cc9f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -266,11 +264,10 @@ code, pre { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
   font-weight: 600;
   letter-spacing: 0.02em;
 }
-/* Monochromatic badges — Apple gray tones */
-.badge-purple { background: rgba(255,255,255,0.06); color: #d1d1d6; border: 1px solid rgba(255,255,255,0.1); }
-.badge-pink   { background: rgba(255,255,255,0.06); color: #ebebf5; border: 1px solid rgba(255,255,255,0.1); }
-.badge-cyan   { background: rgba(10,132,255,0.12);  color: #64d2ff; border: 1px solid rgba(10,132,255,0.25); }
-.badge-green  { background: rgba(48,209,88,0.12);   color: #30d158; border: 1px solid rgba(48,209,88,0.25); }
+.badge-purple { background: rgba(114, 9, 183, 0.20); color: #c77dff; border: 1px solid rgba(114, 9, 183, 0.40); }
+.badge-pink   { background: rgba(247, 37, 133, 0.15); color: #ff85c2; border: 1px solid rgba(247, 37, 133, 0.35); }
+.badge-cyan   { background: rgba(76, 201, 240, 0.15);  color: #4cc9f0; border: 1px solid rgba(76, 201, 240, 0.35); }
+.badge-green  { background: rgba(57, 211, 83, 0.15);   color: #39d353; border: 1px solid rgba(57, 211, 83, 0.35); }
 
 /* --- Form Elements --- */
 .input-field {
@@ -286,7 +283,7 @@ code, pre { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
   transition: all var(--transition-fast);
   resize: vertical;
 }
-.input-field::placeholder { color: var(--text-muted); }
+.input-field::placeholder { color: var(--text-muted); opacity: 0.8; }
 .input-field:focus {
   border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
@@ -315,8 +312,8 @@ code, pre { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.05); }
-  50%       { box-shadow: 0 0 40px rgba(255,255,255,0.14); }
+  0%, 100% { box-shadow: 0 0 20px rgba(247, 37, 133, 0.15); }
+  50%       { box-shadow: 0 0 40px rgba(247, 37, 133, 0.40); }
 }
 @keyframes shimmer-white {
   0%   { background-position: -200% 0; }
