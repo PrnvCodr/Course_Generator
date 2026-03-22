@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import projectLogo from '../assets/logo.png'
 
 const NAV_ITEMS = [
-  { label: 'Home',       to: '/', icon: 'H' },
+  { label: 'Home', to: '/', icon: 'H' },
   { label: 'My Courses', to: '/courses', icon: 'C' },
 ]
 
@@ -11,7 +12,7 @@ export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false)
   const { isAuthenticated, isLoading, user, loginWithRedirect, logout } = useAuth0()
 
-  const handleLogin  = () => loginWithRedirect()
+  const handleLogin = () => loginWithRedirect()
   const handleLogout = () => logout({ logoutParams: { returnTo: window.location.origin } })
 
   return (
@@ -20,8 +21,9 @@ export default function Sidebar() {
         {/* Logo */}
         <div className="sidebar-logo">
           <div className="sidebar-logo-icon">
-            <span className="sidebar-logo-star">✦</span>
+            <img src={projectLogo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
           </div>
+
           {!collapsed && (
             <span className="sidebar-logo-text gradient-text">Text-to-Learn</span>
           )}
