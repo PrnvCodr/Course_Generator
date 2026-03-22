@@ -6,6 +6,7 @@
 [![Backend](https://img.shields.io/badge/Backend-Node.js%20+%20Express-green)](./server)
 [![AI](https://img.shields.io/badge/AI-Google%20Gemini-orange)](https://ai.google.dev)
 <img width="1676" height="699" alt="Screenshot 2026-03-21 175100" src="https://github.com/user-attachments/assets/1dfc08eb-b546-4453-9685-4af20cb0998a" />
+<img width="298" height="899" alt="Screenshot 2026-03-22 201801" src="https://github.com/user-attachments/assets/67814728-33e6-48be-a2e6-3acf0fe40bca" />
 
 ## ✨ Features
 
